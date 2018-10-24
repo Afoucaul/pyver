@@ -20,7 +20,12 @@ def get_version() -> tuple:
 
 def increment_version(version: tuple, section: str) -> tuple:
     try:
-        return update_tuple(version, SECTIONS.index(section), lambda x: x+1)
+        new_version = update_tuple(version, SECTIONS.index(section), lambda x: x+1)
+        for s in SECTIONS[SECTIONS.index(section)+1:]:
+            new_version = update_tuple(new_version, SECTIONS.index(s), lambda _: 0)
+
+        return new_version
+
     except Exception:
         if section == 'label':
             raise NotImplementedError
