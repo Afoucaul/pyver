@@ -19,9 +19,13 @@ def bump(args):
         write_git_version(new_version)
 
 
+def print_version():
+    print(version_to_string(get_version))
+
+
 def ask(question, yes="yes", no="no"):
     while True:
-        answer = input("%s [%s]%s/[%s]%s\n>" % (question, yes[0], yes[1:], no[0], no[1:]))
+        answer = input("%s [%s]%s/[%s]%s\n> " % (question, yes[0], yes[1:], no[0], no[1:]))
         if yes.startswith(answer.lower()):
             return True
         elif no.startswith(answer.lower()):

@@ -14,7 +14,7 @@ def main(args):
         commands.bump(args)
 
     else:
-        print(get_version())
+        command.print_version()
 
 
 if __name__ == '__main__':
