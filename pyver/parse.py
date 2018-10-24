@@ -69,3 +69,7 @@ def is_git() -> bool:
 
 def update_tuple(t, index, function):
     return t[:index] + (function(t[index]), ) + t[index+1:]
+
+
+def version_to_string(version):
+    return '.'.join(str(x) for x in version)

@@ -1,7 +1,22 @@
-from .parse import get_version
+"""pyver
+Usage:
+    pyver
+    pyver bump (major | minor | patch)
+"""
 
-def main():
-    print(get_version())
+from docopt import docopt
+from .parse import get_version
+from . import commands
+
+
+def main(args):
+    if args['bump']:
+        commands.bump(args)
+
+    else:
+        print(get_version())
+
 
 if __name__ == '__main__':
-    main()
+    args = docopt(__doc__)
+    main(args)
