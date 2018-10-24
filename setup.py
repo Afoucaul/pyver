@@ -7,7 +7,7 @@ with open("PYPI_README.md", 'r') as f:
 
 setuptools.setup(
     name="python_versionning",
-    version="1.2.0",
+    version="1.3.0",
     entry_points={
         'console_scripts': []
     },
