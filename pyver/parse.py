@@ -33,15 +33,17 @@ def write_python_version(version) -> None:
     with open(init_path, 'r') as target:
         content = target.read()
     with open(init_path, 'w') as target:
-        target.write(VERSION_REGEX.sub(content, 'version = "{}"'.format(version)))
+        target.write(VERSION_REGEX.sub('version = "{}"'.format(version), content))
 
     try:
         with open("setup.py", 'r') as target:
             content = target.read()
         with open("setup.py", 'w') as target:
-            target.write(VERSION_REGEX.sub(content, 'version="{}"'.format(version)))
+            target.write(VERSION_REGEX.sub('version="{}"'.format(version), content))
     except:
         pass
+
+    print("Wrote version")
 
 
 def write_git_version(version) -> None:
