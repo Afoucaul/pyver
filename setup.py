@@ -6,7 +6,7 @@ with open("PYPI_README.md", 'r') as f:
 
 
 setuptools.setup(
-    name="pyver",
+    name="python_versionning",
     version="1.0.0",
     entry_points={
         'console_scripts': []
