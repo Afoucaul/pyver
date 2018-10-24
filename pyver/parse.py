@@ -58,7 +58,7 @@ def write_git_version(version) -> None:
 
 def commit_git_changes() -> None:
     init_path = get_init_path()
-    subprocess.call(["git", "add", init_path])
+    subprocess.call(["git", "add", init_path, "setup.py"])
     subprocess.call(["git", "commit", "-m", "'Bumped version'"])
 
 

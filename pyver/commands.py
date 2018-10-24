@@ -4,7 +4,8 @@ from .parse import (
     SECTIONS, 
     write_git_version, 
     write_python_version,
-    version_to_string
+    version_to_string,
+    commit_git_changes
 )    
 
 
@@ -17,6 +18,9 @@ def bump(args):
     if answer:
         write_python_version(new_version)
         write_git_version(new_version)
+        commit_git_changes()
+
+    print("Bumped version to %s" % new_version)
 
 
 def print_version():
