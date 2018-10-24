@@ -20,7 +20,7 @@ def bump(args):
         write_git_version(new_version)
         commit_git_changes()
 
-    print("Bumped version to %s" % new_version)
+    print("Bumped version to %s" % (version_to_string(new_version), ))
 
 
 def print_version():
