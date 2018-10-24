@@ -60,7 +60,7 @@ def get_project_name() -> str:
 
 
 def get_init_path() -> str:
-    return os.join(os.path.split(os.getcwd())[1], "__init__.py")
+    return os.path.join(os.path.split(os.getcwd())[1], "__init__.py")
 
 
 def is_git() -> bool:
@@ -68,4 +68,4 @@ def is_git() -> bool:
 
 
 def update_tuple(t, index, function):
-    return t[:index] + (function(t[index]), ) + t[index+1:])
+    return t[:index] + (function(t[index]), ) + t[index+1:]
