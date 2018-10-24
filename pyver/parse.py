@@ -4,7 +4,10 @@ import re
 import subprocess
 
 
-VERSION_REGEX = re.compile(r'version\s*=\s*"(\d+)\.(\d+)\.(\d+)(-\w+)?"', re.MULTILINE)
+VERSION_REGEX = re.compile(
+    r'(?:__)?version(?:__)?\s*=\s*"(\d+)\.(\d+)\.(\d+)(-\w+)?"', 
+    re.MULTILINE
+)
 SECTIONS = ('major', 'minor', 'patch')
 
 
@@ -33,7 +36,7 @@ def write_python_version(version) -> None:
     with open(init_path, 'r') as target:
         content = target.read()
     with open(init_path, 'w') as target:
-        target.write(VERSION_REGEX.sub('version = "{}"'.format(version), content))
+        target.write(VERSION_REGEX.sub('__version__ = "{}"'.format(version), content))
 
     try:
         with open("setup.py", 'r') as target:
