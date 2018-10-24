@@ -27,16 +27,18 @@ def increment_version(version: tuple, section: str) -> tuple:
 
 def write_python_version(version) -> None:
     if isinstance(version, tuple):
-        version = ".".join(version)
+        version = version_to_string(version)
 
     init_path = get_init_path()
-    with open(init_path, 'rw') as target:
+    with open(init_path, 'r') as target:
         content = target.read()
+    with open(init_path, 'w') as target:
         target.write(VERSION_REGEX.sub(content, 'version = "{}"'.format(version)))
 
     try:
-        with open("setup.py", 'rw') as target:
+        with open("setup.py", 'r') as target:
             content = target.read()
+        with open("setup.py", 'w') as target:
             target.write(VERSION_REGEX.sub(content, 'version="{}"'.format(version)))
     except:
         pass
@@ -44,7 +46,7 @@ def write_python_version(version) -> None:
 
 def write_git_version(version) -> None:
     if isinstance(version, tuple):
-        version = ".".join(version)
+        version = version_to_string(version)
 
     subprocess.call(["git", "tag", version])
 
